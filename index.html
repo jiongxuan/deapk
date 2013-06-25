@@ -4,7 +4,7 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="DeApk : An open source tool that can directly decompile the APK files to Android project with only one step." />
+    <meta name="description" content="DeApk : An open source tool that can directly decompile the APK files to Android project with only ONE STEP." />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -19,7 +19,7 @@
           <a id="forkme_banner" href="https://github.com/jiongxuan/deapk">View on GitHub</a>
 
           <h1 id="project_title">DeApk</h1>
-          <h2 id="project_tagline">An open source tool that can directly decompile the APK files to Android project with only one step.</h2>
+          <h2 id="project_tagline">An open source tool that can directly decompile the APK files to Android project with only ONE STEP.</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/jiongxuan/deapk/zipball/master">Download this project as a .zip file</a>
@@ -32,49 +32,56 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a name="what-is-deapk" class="anchor" href="#what-is-deapk"><span class="octicon octicon-link"></span></a>What is DeApk?</h1>
+<a name="what-is-deapk" class="anchor" href="#what-is-deapk"><span class="octicon octicon-link"></span></a>What is Deapk?</h1>
 
-<p>DeApk is an open source tool that can <strong>directly decompile the APK files to Android project</strong> with only one step.</p>
+<hr><p>Deapk is an open source tool that can <strong>directly decompile the APK files to Android project</strong> with only one step.</p>
 
 <p>It is applied to Android platform, and the study and development personnel can use it. It is so simple that <strong>even the new learners can use it.</strong></p>
 
 <p>It can be used in Windows, Linux and Mac system.</p>
 
 <h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ul>
+<li>Drag APK to Deapk.bat (Windows only)</li>
+<li>input "deapk xxx.apk" in the command line (All platform)
+So easy, right?</li>
+</ul><h2>
 <a name="before" class="anchor" href="#before"><span class="octicon octicon-link"></span></a>Before</h2>
 
-<p><strong>Before DeApk is developed</strong>, if you want to decompile an Android application program <em>(i.e. a file with APK as the extension name, hereinafter referred to as “APK”)</em> so as to generate a complete Eclipse project with Java source code and resource files, the following steps are usually taken: </p>
+<p><strong>Before Deapk is developed</strong>, if you want to decompile an Android application program <em>(i.e. a file with APK as the extension name, hereinafter referred to as “APK”)</em> so as to generate a complete Eclipse project with Java source code and resource files, the following steps are usually taken: </p>
 
-<p><em>1. Input ApkTool d a.apk and decompile all resource files and smali files in APK.</em></p>
-
-<p><em>2. Extract the classes.dex files in APK and input Dex2Jar classes.dex to generate all Java Class files;</em></p>
-
-<p><em>3. Open JD-GUI (or input jad) so as to generate all Java source code files;</em></p>
-
-<p><em>4. Open Eclipse and create a new Android project with “package name” and “project name”, etc filled in;</em></p>
-
-<p><em>5. Import all files that shall be decompiled into this project as needed.</em></p>
+<blockquote>
+<ol>
+<li><p>Input ApkTool d a.apk and decompile all resource files and smali files in APK.</p></li>
+<li><p>Extract the classes.dex files in APK and input Dex2Jar classes.dex to generate all Java Class files;</p></li>
+<li><p>Open JD-GUI (or input jad) so as to generate all Java source code files;</p></li>
+<li><p>Open Eclipse and create a new Android project with “package name” and “project name”, etc filled in;</p></li>
+<li><p>Import all files that shall be decompiled into this project as needed.</p></li>
+</ol>
+</blockquote>
 
 <p>Generally, <strong>this requires a lot of time and efforts</strong>, and you also need to understand what shall be done for each step and how to do? This is very troublesome for new learners.</p>
 
 <h2>
 <a name="after" class="anchor" href="#after"><span class="octicon octicon-link"></span></a>After</h2>
 
-<p>Now, everything has become simpler. <strong>You just need to drag APK to DeApk or input deapk xxx.apk in the command line, and then you can get the results you expect</strong>. The Eclipse project generated after de-compilation is very complete, <strong>just like our own project</strong>, so it is a necessary tool for project learning and study.</p>
+<p>Now, everything has become simpler. <strong>You just need to drag APK to Deapk or input deapk xxx.apk in the command line, and then you can get the results you expect</strong>. The Eclipse project generated after de-compilation is very complete, <strong>just like our own project</strong>, so it is a necessary tool for project learning and study.</p>
 
-<p><strong>DeApk</strong> provides a solution which will integrate the current best and most mature open source decompilation tools together to make such tools play their core strength, and meanwhile make them complement each other. Its development is only for presenting you the best results.</p>
+<p><strong>Deapk</strong> provides a solution which will integrate the current best and most mature open source decompilation tools together to make such tools play their core strength, and meanwhile make them complement each other. Its development is only for presenting you the best results.</p>
 
 <h2>
 <a name="attentions" class="anchor" href="#attentions"><span class="octicon octicon-link"></span></a>Attentions</h2>
 
-<p>Just like ApkTool, Dex2Jar and other open source tools, <strong>DeApk</strong> only provides a more convenient way for your study of excellent project. <strong>If you use it for illegal purposes with any consequences resulted, the developer of DeApk will not assume any liability and so please make clear confirmation before use.</strong> Furthermore, it is suggested to well protect the codes of the commercial Android project with Proguard or other excellent tools. </p>
+<p>Just like ApkTool, Dex2Jar and other open source tools, <strong>Deapk</strong> only provides a more convenient way for your study of excellent project. <strong>If you use it for illegal purposes with any consequences resulted, the developer of Deapk will not assume any liability and so please make clear confirmation before use.</strong> Furthermore, it is suggested to well protect the codes of the commercial Android project with Proguard or other excellent tools. </p>
 
 <p>In addition, although Android application is easily to be decompiled, no one can restore the non-open source project to source codes at present no matter what technology is used and how simple the method is.</p>
 
 <h1>
 <a name="who-am-i" class="anchor" href="#who-am-i"><span class="octicon octicon-link"></span></a>Who am I?</h1>
 
-<p>I am a dreamer in pursuit of simplest way, loving technology and advocating combination of humanities, technology and art. Just like all of you, I also have been doing my endeavors on the long way chasing our dream. </p>
+<hr><p>I am a dreamer in pursuit of simplest way, loving technology and advocating combination of humanities, technology and art. Just like all of you, I also have been doing my endeavors on the long way chasing our dream. </p>
 
 <p>When I was 9, I used a completely new program language to realize my idea for the first time. I was deeply mesmerized by the feeling. At that time, I had no idea what I could do with it but I felt the power of freedom and creation deep in my heart. It is exactly what has led me in following my heart and doing what I like for the past 16 years.</p>
 
@@ -97,17 +104,17 @@
 
 <p><strong>Bulk import platform for temporary residence permits and residence permits</strong>. I have thought of this when attending meeting in the police station in 2010 and then it is raised and produced. It is implemented by "Screen Script" similar to VB together with "C + + Hook". Similarly, this tool will fully automatically replace the previous tedious manual Excel import and manual verification process with only two steps. From manual input at 120 seconds/person in the past to unattended state at 20 seconds / person, the working efficiency is improved by several times and a large number of personnel is reduced. Up to now, this product is still winning awards.</p>
 
-<p><strong>DeApk</strong>, which is published in 2013 on the github website.</p>
+<p><strong>Deapk</strong>, which is published in 2013 on the github website.</p>
 
 <h1>
-<a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code？</h1>
+<a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code</h1>
 
-<p><strong>DeApk</strong> is an open source project which is developed for the users’ easy operation and relatively simple code implementation. The core is in the Deapk.java.</p>
+<hr><p><strong>Deapk</strong> is an open source project which is developed for the users’ easy operation and relatively simple code implementation. The core is in the Deapk.java.</p>
 
 <h1>
 <a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h1>
 
-<p>Thanks to the following open source project teams (and authors). You have made <strong>DeApk</strong> more excellent. </p>
+<hr><p>Thanks to the following open source project teams (and authors). You have made <strong>Deapk</strong> more excellent. </p>
 
 <p><a href="http://code.google.com/p/android-apktool/">android-apktool</a></p>
 
