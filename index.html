@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="DeApk : An open source tool that can directly decompile the APK files to Android project with only one step." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>DeApk</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jiongxuan/deapk">View on GitHub</a>
+
+          <h1 id="project_title">DeApk</h1>
+          <h2 id="project_tagline">An open source tool that can directly decompile the APK files to Android project with only one step.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jiongxuan/deapk/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jiongxuan/deapk/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="what-is-deapk" class="anchor" href="#what-is-deapk"><span class="octicon octicon-link"></span></a>What is DeApk?</h1>
+
+<p>DeApk is an open source tool that can <strong>directly decompile the APK files to Android project</strong> with only one step.</p>
+
+<p>It is applied to Android platform, and the study and development personnel can use it. It is so simple that <strong>even the new learners can use it.</strong></p>
+
+<p>It can be used in Windows, Linux and Mac system.</p>
+
+<h2>
+<a name="before" class="anchor" href="#before"><span class="octicon octicon-link"></span></a>Before</h2>
+
+<p><strong>Before DeApk is developed</strong>, if you want to decompile an Android application program <em>(i.e. a file with APK as the extension name, hereinafter referred to as “APK”)</em> so as to generate a complete Eclipse project with Java source code and resource files, the following steps are usually taken: </p>
+
+<p><em>1. Input ApkTool d a.apk and decompile all resource files and smali files in APK.</em></p>
+
+<p><em>2. Extract the classes.dex files in APK and input Dex2Jar classes.dex to generate all Java Class files;</em></p>
+
+<p><em>3. Open JD-GUI (or input jad) so as to generate all Java source code files;</em></p>
+
+<p><em>4. Open Eclipse and create a new Android project with “package name” and “project name”, etc filled in;</em></p>
+
+<p><em>5. Import all files that shall be decompiled into this project as needed.</em></p>
+
+<p>Generally, <strong>this requires a lot of time and efforts</strong>, and you also need to understand what shall be done for each step and how to do? This is very troublesome for new learners.</p>
+
+<h2>
+<a name="after" class="anchor" href="#after"><span class="octicon octicon-link"></span></a>After</h2>
+
+<p>Now, everything has become simpler. <strong>You just need to drag APK to DeApk or input deapk xxx.apk in the command line, and then you can get the results you expect</strong>. The Eclipse project generated after de-compilation is very complete, <strong>just like our own project</strong>, so it is a necessary tool for project learning and study.</p>
+
+<p><strong>DeApk</strong> provides a solution which will integrate the current best and most mature open source decompilation tools together to make such tools play their core strength, and meanwhile make them complement each other. Its development is only for presenting you the best results.</p>
+
+<h2>
+<a name="attentions" class="anchor" href="#attentions"><span class="octicon octicon-link"></span></a>Attentions</h2>
+
+<p>Just like ApkTool, Dex2Jar and other open source tools, <strong>DeApk</strong> only provides a more convenient way for your study of excellent project. <strong>If you use it for illegal purposes with any consequences resulted, the developer of DeApk will not assume any liability and so please make clear confirmation before use.</strong> Furthermore, it is suggested to well protect the codes of the commercial Android project with Proguard or other excellent tools. </p>
+
+<p>In addition, although Android application is easily to be decompiled, no one can restore the non-open source project to source codes at present no matter what technology is used and how simple the method is.</p>
+
+<h1>
+<a name="who-am-i" class="anchor" href="#who-am-i"><span class="octicon octicon-link"></span></a>Who am I?</h1>
+
+<p>I am a dreamer in pursuit of simplest way, loving technology and advocating combination of humanities, technology and art. Just like all of you, I also have been doing my endeavors on the long way chasing our dream. </p>
+
+<p>When I was 9, I used a completely new program language to realize my idea for the first time. I was deeply mesmerized by the feeling. At that time, I had no idea what I could do with it but I felt the power of freedom and creation deep in my heart. It is exactly what has led me in following my heart and doing what I like for the past 16 years.</p>
+
+<p>Perhaps you are also this kind of man who can not wait to change anything that has been found unreasonable and not perfect because you feel so miserable for this. <strong>We have to live in such an imperfect world, but we have the ability to change everything.</strong></p>
+
+<p>Believe me, provision of the simplest and best service is just the first step in the long march. Although it is not great, it still has profound significance. In the near future, you will see more of my works, all of which will be arising from my interests.</p>
+
+<p>Please follow me and thanks for your consistent supports. </p>
+
+<p>Now I am working in the largest Internet security company in China - Qihoo 360, as Android software engineer.</p>
+
+<p>My Email: <a href="mailto:%20jiongj.zhang@gmail.com">JiongJ.Zhang@gmail.com</a></p>
+
+<h2>
+<a name="my-products" class="anchor" href="#my-products"><span class="octicon octicon-link"></span></a>My products</h2>
+
+<p><strong>CnPack Debug Tools</strong>, which is designed and developed in 2003 when working in CnPack open source project team, is an open source Delphi tool. Its development reduces dozens of steps for Delphi debugging to only one step, thus the debugging efficiency is improved by more than 60 times. For this, it has once become the dedicated tool for Delphi debugging by our internal teams and other teams.</p>
+
+<p><strong>Hospitality KeyTool</strong>, which is published in 2004 on the largest Delphi Forum (DelphiBox) in China at that time, is an open source C# tool. By input of the question and answer that you know (for example, your birthday or the name of your father, etc; only English can be used at that time), you can generate an encrypted password that can be used anywhere.</p>
+
+<p><strong>Bulk import platform for temporary residence permits and residence permits</strong>. I have thought of this when attending meeting in the police station in 2010 and then it is raised and produced. It is implemented by "Screen Script" similar to VB together with "C + + Hook". Similarly, this tool will fully automatically replace the previous tedious manual Excel import and manual verification process with only two steps. From manual input at 120 seconds/person in the past to unattended state at 20 seconds / person, the working efficiency is improved by several times and a large number of personnel is reduced. Up to now, this product is still winning awards.</p>
+
+<p><strong>DeApk</strong>, which is published in 2013 on the github website.</p>
+
+<h1>
+<a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code？</h1>
+
+<p><strong>DeApk</strong> is an open source project which is developed for the users’ easy operation and relatively simple code implementation. The core is in the Deapk.java.</p>
+
+<h1>
+<a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h1>
+
+<p>Thanks to the following open source project teams (and authors). You have made <strong>DeApk</strong> more excellent. </p>
+
+<p><a href="http://code.google.com/p/android-apktool/">android-apktool</a></p>
+
+<p><em>A tool for reverse engineering Android apk files</em></p>
+
+<p><a href="http://code.google.com/p/dex2jar/">dex2jar</a></p>
+
+<p><em>Tools to work with android .dex and java .class files</em></p>
+
+<p><a href="http://java.decompiler.free.fr/?q=jdintellij">JD-IntelliJ</a></p>
+
+<p><em>Allows you to display all the Java sources even if you do not have them all</em></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">DeApk maintained by <a href="https://github.com/jiongxuan">jiongxuan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
