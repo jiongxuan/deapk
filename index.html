@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Deapk : An open source tool that can directly decompile the APK files to Android project with only ONE STEP." />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Deapk</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Deapk by jiongxuan</title>
   </head>
 
   <body>
+    <div id="container">
+      <div class="inner">
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/jiongxuan/deapk">View on GitHub</a>
-
-          <h1 id="project_title">Deapk</h1>
-          <h2 id="project_tagline">An open source tool that can directly decompile the APK files to Android project with only ONE STEP.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/jiongxuan/deapk/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/jiongxuan/deapk/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+        <header>
+          <h1>Deapk</h1>
+          <h2>An open source tool that can directly decompile the APK files to Android project with only ONE STEP.</h2>
         </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jiongxuan/deapk/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jiongxuan/deapk/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jiongxuan/deapk" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
 <a name="why-make-deapk" class="anchor" href="#why-make-deapk"><span class="octicon octicon-link"></span></a>Why make Deapk?</h1>
 
 <hr><p>When I was 9, I used a completely new program language to realize my idea for the first time. I was deeply mesmerized by the feeling. At that time, I had no idea what I could do with it but I felt the power of freedom and creation deep in my heart. It is exactly what has led me in following my heart and doing what I like for the past 15 years.</p>
@@ -53,10 +53,12 @@
 <h2>
 <a name="effects" class="anchor" href="#effects"><span class="octicon octicon-link"></span></a>Effects</h2>
 
+<p>Deapk can:</p>
+
 <ul>
 <li>Create a new Android project with “project name”, etc filled in <strong>automatically</strong>;</li>
 <li>Decompile all resource files and smali files in APK.</li>
-<li>Extract the classes.dex files in APK to generate all Java Class files;</li>
+<li>Extract the classes.dex files in APK and generate all Java Class files;</li>
 <li>Generate all Java source code files in classes.dex;</li>
 <li>Import all files that shall be decompiled into this project as needed.</li>
 </ul><p><strong>Before Deapk is developed</strong>, if you want to decompile an APK so as to generate a complete Eclipse project with Java source code and resource files, a lot of steps are usually taken and requires a lot of time and efforts, and you also need to understand what shall be done for each step and how to do? This is very troublesome for new learners.</p>
@@ -64,6 +66,17 @@
 <p>Now, everything has become simpler. <strong>You just need to drag APK to Deapk or input deapk xxx.apk in the command line, and then you can get the results you expect</strong>. The Eclipse project generated after de-compilation is very complete, <strong>just like our own project</strong>, so it is a necessary tool for project learning and study.</p>
 
 <p><strong>Deapk</strong> provides a solution which will integrate the current best and most mature open source decompilation tools together to make such tools play their core strength, and meanwhile make them complement each other. Its development is only for presenting you the best results.</p>
+
+<p>Using: Apktool, Dex2jar, JD-IntelliJ(tailored to Deapk).</p>
+
+<h3>
+<a name="windows-platform-prerequisites" class="anchor" href="#windows-platform-prerequisites"><span class="octicon octicon-link"></span></a>WINDOWS PLATFORM PREREQUISITES</h3>
+
+<p>The native library, included into JD-IntelliJ for Windows, has been built with Microsoft Visual C++ 2008 Express Edition. Some runtime components of Visual C++ Libraries are required to run the decompiler. You can download and install them from the Microsoft Web site :</p>
+
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=A5C84275-3B97-4AB7-A40D-3802B2AF5FC2&amp;displaylang=en">Microsoft Visual C++ 2008 SP1 Redistributable Package (x86)</a></p>
+
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=BA9257CA-337F-4B40-8C14-157CFDFFEE4E&amp;displaylang=en">Microsoft Visual C++ 2008 SP1 Redistributable Package (x64)</a></p>
 
 <h2>
 <a name="attentions" class="anchor" href="#attentions"><span class="octicon octicon-link"></span></a>Attentions</h2>
@@ -85,7 +98,9 @@
 
 <p>Now I am working in the largest Internet security company in China - Qihoo 360, as Android software engineer.</p>
 
-<p>My Email: <a href="mailto:%20jiongj.zhang@gmail.com">JiongJ.Zhang@gmail.com</a></p>
+<p>Email: <a href="mailto:%20jiongj.zhang@gmail.com">JiongJ.Zhang@gmail.com</a></p>
+
+<p>Weibo(China):<a href="http://weibo.com/hihaoke">@好客World</a></p>
 
 <h2>
 <a name="my-products" class="anchor" href="#my-products"><span class="octicon octicon-link"></span></a>My products</h2>
@@ -121,18 +136,15 @@
 <p><a href="http://java.decompiler.free.fr/?q=jdintellij">JD-IntelliJ</a></p>
 
 <p><em>Allows you to display all the Java sources even if you do not have them all</em></p>
-      </section>
+        </section>
+
+        <footer>
+          Deapk is maintained by <a href="https://github.com/jiongxuan">jiongxuan</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Deapk maintained by <a href="https://github.com/jiongxuan">jiongxuan</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
   </body>
 </html>
