@@ -1,0 +1,28 @@
+/*
+ * De-Apk - A tools for "APK -> Eclipse Project"
+ * Copyright (c) 2013-2014 Jiongxuan Zhang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+DE-APK 1.0
+    (30/06/2013)
+    1. You can generate standard Android Eclipse project
+    2. You can decompile all resource files, XML files, through apktool 1.5.2
+    3. You can decompile all class files, through dex2jar 0.0.9.11
+    4. You can decompile all Java source codes, through custom jd-intellij
+
+DE-APK Beginning
+    (15/06/2013)
+    Write down the first line of code.

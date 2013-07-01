@@ -1,0 +1,37 @@
+/*
+ * De-Apk - A tools for "APK -> Eclipse Project"
+ * Copyright (c) 2013-2014 Jiongxuan Zhang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+Contributors
+    Jiongxuan Zhang - jiongj.zhang@gmail.com
+        in Beijing, China
+
+    We sincerely looking forward to your joining.
+
+
+Open source projects
+    We used the following open source projects for your contribution to express my heartfelt gratitude!
+    It can be said, without your project, perhaps no De-APK birth.
+
+    apktool - It is a tool for reverse engineering 3rd party, closed, binary Android apps (resources, smalis)
+    http://code.google.com/p/android-apktool/
+
+    dex2jar - Tools to work with android .dex and java .class files
+    http://code.google.com/p/dex2jar/
+
+    jd-intellij - It allows you to display all the Java sources during your debugging process
+    https://bitbucket.org/bric3/jd-intellij/overview
