@@ -1,5 +1,5 @@
 /*
- * De-Apk - A tools for "APK -> Android Project"
+ * Deapk - A tools for "APK -> Android Project"
  * Copyright (c) 2013-2014 Jiongxuan Zhang
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ public class MainApplication {
         System.out.println("====================================================================");
         System.out.println();
         System.out
-                .println(" Welcome to choose Deapk");
+                .println(" Welcome to choose Deapk by Jiongxuan");
         System.out.println("    The most convenient source decompiling tool by far.");
         System.out.println();
         System.out

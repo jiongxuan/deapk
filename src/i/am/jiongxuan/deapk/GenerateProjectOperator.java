@@ -1,5 +1,5 @@
 /*
- * De-Apk - A tools for "APK -> Android Project"
+ * Deapk - A tools for "APK -> Android Project"
  * Copyright (c) 2013-2014 Jiongxuan Zhang
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -92,6 +92,7 @@ public class GenerateProjectOperator {
             XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(
                     mProjectPath + ".classpath"));
             xmlWriter.write(document);
+            xmlWriter.close();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -130,6 +131,7 @@ public class GenerateProjectOperator {
             XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(
                     mProjectPath + ".project"));
             xmlWriter.write(document);
+            xmlWriter.close();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
