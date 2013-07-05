@@ -1,5 +1,5 @@
 /*
- * De-Apk - A tools for "APK -> Eclipse Project"
+ * Deapk - A tools for "APK -> Eclipse Project"
  * Copyright (c) 2013-2014 Jiongxuan Zhang
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,10 @@
  */
 
 DeApk 1.1
-    (06/07/2013)
-    [Fix] After writing .classpath and .project, the XMLWriter did not close.
+    (05/07/2013)
+    [NEW] Support for multiple files to deapk
+
+    [FIX] After writing .classpath and .project, the XMLWriter did not close.
 
 Deapk 1.0
     (30/06/2013)

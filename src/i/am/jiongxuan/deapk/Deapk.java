@@ -77,6 +77,10 @@ public class Deapk {
                 mProjectPath);
     }
 
+    public String getApkPath() {
+        return mApkPath;
+    }
+
     public boolean isApkExists() {
         return mApkFile.exists();
     }

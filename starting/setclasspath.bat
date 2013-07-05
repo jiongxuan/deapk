@@ -1,5 +1,5 @@
 REM
-REM De-Apk - A tools for "APK -> Eclipse Project"
+REM Deapk - A tools for "APK -> Eclipse Project"
 REM Copyright (c) 2013-2014 Jiongxuan Zhang
 REM
 REM Licensed under the Apache License, Version 2.0 (the "License");
