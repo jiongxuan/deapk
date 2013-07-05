@@ -156,12 +156,12 @@ public class MainApplication {
         System.out.println("    deapk <apk_path>");
         System.out.println();
         System.out.println("Support for multiple files to deapk. Just like:");
-        System.out.println("    deapk <apk1> <apk2> <apk3>...");
-        System.out.println("    deapk <*.apk>");
+        System.out.println("    deapk <apk1> <apk2> <*.apk>...");
         System.out.println();
         System.out.println("i.e.");
         System.out.println("    deapk haoke.apk");
         System.out.println("    deapk sin.apk cos.apk tan.apk");
+        System.out.println("    deapk *.apk");
         System.out.println();
         System.out.println("So easy, right?");
     }
