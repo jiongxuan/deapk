@@ -34,7 +34,7 @@ public class MainApplication {
         System.out.println("====================================================================");
         System.out.println();
         System.out
-                .println(" Welcome to choose Deapk by Jiongxuan,");
+                .println(" Welcome to choose Deapk by Jiongxuan (Version: 1.1)");
         System.out.println("    The most convenient source decompiling tool by far.");
         System.out.println();
         System.out
