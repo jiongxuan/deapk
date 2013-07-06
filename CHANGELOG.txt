@@ -1,5 +1,5 @@
 /*
- * De-Apk - A tools for "APK -> Eclipse Project"
+ * Deapk - A tools for "APK -> Eclipse Project"
  * Copyright (c) 2013-2014 Jiongxuan Zhang
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,14 +15,21 @@
  * limitations under the License.
  */
 
+DeApk 1.2
+    (06/07/2013)
+    [NEW] Support for multiple files to deapk
+    [OPT] Put decompile error into the error.txt file.
+    [OPT] Press 'y' to restart, otherwise to ignore if a Deapked project exists.
 
-DE-APK 1.0
+    [FIX] After writing .classpath and .project, the XMLWriter did not close.
+
+Deapk 1.0
     (30/06/2013)
-    1. You can generate standard Android Eclipse project
-    2. You can decompile all resource files, XML files, through apktool 1.5.2
-    3. You can decompile all class files, through dex2jar 0.0.9.11
-    4. You can decompile all Java source codes, through custom jd-intellij
+    [NEW] You can generate standard Android Eclipse project
+    [NEW] You can decompile all resource files, XML files, through apktool 1.5.2
+    [NEW] You can decompile all class files, through dex2jar 0.0.9.11
+    [NEW] You can decompile all Java source codes, through custom jd-intellij
 
-DE-APK Beginning
+Deapk Beginning
     (15/06/2013)
     Write down the first line of code.
