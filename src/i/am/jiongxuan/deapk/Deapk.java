@@ -37,10 +37,12 @@ import i.am.jiongxuan.util.UnZip;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,6 +56,7 @@ public class Deapk {
     private String mProjectPath;
     private String mClassesDexPath;
     private String mClassesJarPath;
+    private String mErrorPath;
     private String mSrcPath;
 
     private File mApkFile;
@@ -71,6 +74,7 @@ public class Deapk {
 
         mClassesDexPath = mProjectPath + "classes.dex";
         mClassesJarPath = mProjectPath + "classes.jar";
+        mErrorPath = mProjectPath + "error.txt";
         mSrcPath = mProjectPath + "src" + File.separator;
 
         mGenerateProjectOperator = new GenerateProjectOperator(
@@ -239,20 +243,33 @@ public class Deapk {
         percentWritter.end(true);
 
         Collections.sort(failureList);
-
-        for (String failurePath : failureList) {
-            System.out.println("ERROR: Unable to decompile the file: "
-                    + failurePath);
-        }
+        writeError("Unable to decompile these files:", failureList);
 
         String printString = String
                 .format("          Decompiled %d java source files, succeed %d files, error %d files",
                         count, count - failureList.size(), failureList.size());
         System.out.println(printString);
-
+       
         return true;
     }
 
+    private void writeError(String errorTitle, List<String> errors) {
+		try {
+	    	FileWriter errorWriter = new FileWriter(mErrorPath);
+	    	errorWriter.write(errorTitle + "\r\n");
+	    	
+	    	for (String error : errors) {
+				errorWriter.write("      " + error + "\r\n");
+			}
+			
+			if (errorWriter != null) {
+				errorWriter.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
     private boolean writeEclipseProjectFiles() {
         System.out.println(">>> (5/5) Creating a new Android project...");
         mGenerateProjectOperator.generateGenDir();

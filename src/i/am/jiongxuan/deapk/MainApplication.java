@@ -34,15 +34,14 @@ public class MainApplication {
         System.out.println("====================================================================");
         System.out.println();
         System.out
-                .println(" Welcome to choose Deapk by Jiongxuan (Version: 1.1)");
+                .println(" Welcome to choose Deapk by Jiongxuan (Version: 1.2)");
         System.out.println("    The most convenient source decompiling tool by far.");
         System.out.println();
         System.out
                 .println(" Decompile the APK files to Android project");
-        System.out.println("    with only one step.");
+        System.out.println("    with only ONE STEP.");
         System.out.println();
         System.out.println("====================================================================");
-        System.out.println();
 
         if (args.length < 1) {
             usage();
@@ -72,7 +71,8 @@ public class MainApplication {
             String vaildFile = vaildFileList.get(i);
             Deapk deapk = new Deapk(vaildFile);
             if (deapkNow(deapk)) {
-                System.out.println(">>> Deapked the " + deapk.getProjectNameIfExists() + "project complete!");
+            	System.out.println();
+                System.out.println(">>> Deapked the " + deapk.getProjectNameIfExists() + " project complete!");
                 hasSucceed = true;
             }
         }
@@ -114,7 +114,7 @@ public class MainApplication {
             System.out.println("???");
             System.out.println("???    This project has been Deapked " + date + ".");
             System.out.println("???    Please confirm whether it will be redone?");
-            System.out.println("??? (Yes/No)");
+            System.out.println("??? Press 'y' to restart, otherwise to ignore.");
 
             String response = "";
             BufferedReader strin = new BufferedReader(new InputStreamReader(System.in));
@@ -152,6 +152,7 @@ public class MainApplication {
     }
 
     private static void usage() {
+    	System.out.println();
         System.out.println("Usage:");
         System.out.println("    deapk <apk_path>");
         System.out.println();

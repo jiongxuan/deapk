@@ -15,9 +15,11 @@
  * limitations under the License.
  */
 
-DeApk 1.1
-    (05/07/2013)
+DeApk 1.2
+    (06/07/2013)
     [NEW] Support for multiple files to deapk
+    [OPT] Put decompile error into the error.txt file.
+    [OPT] Press 'y' to restart, otherwise to ignore if a Deapked project exists.
 
     [FIX] After writing .classpath and .project, the XMLWriter did not close.
 
