@@ -18,15 +18,16 @@
 package i.am.jiongxuan.deapk.jd.core;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 import jd.ide.intellij.JavaDecompiler;
 
 public class Decompiler {
     private JavaDecompiler mDecompiler;
-    private String mJarPath;
+    private Path mJarPath;
     private DecomplieEnumeration mDecomplieEnumeration;
 
-    public Decompiler(String jarPath) {
+    public Decompiler(Path jarPath) {
         mDecompiler = new JavaDecompiler();
         mJarPath = jarPath;
     }

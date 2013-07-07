@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
 
 /**
  * @author Jiongxuan Zhang
@@ -60,8 +61,8 @@ public class FileUtils {
                 targetPath));
     }
 
-    public static boolean deleteDir(String dir) {
-        return deleteDir(new File(dir));
+    public static boolean deleteDir(Path dir) {
+        return deleteDir(dir.toFile());
     }
 
     public static boolean deleteDir(File dir) {
