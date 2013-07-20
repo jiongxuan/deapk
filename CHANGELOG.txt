@@ -15,13 +15,19 @@
  * limitations under the License.
  */
 
+Deapk 1.6
+	(14/07/2013)
+	[NEW] More convenient to view the Java code and Smali code
+	
+	[OPT] Upgrade to JDK 7.0 to enhance stability
+	
 DeApk 1.2
     (06/07/2013)
     [NEW] Support for multiple files to deapk
-    [OPT] Put decompile error into the error.txt file.
-    [OPT] Press 'y' to restart, otherwise to ignore if a Deapked project exists.
+    [OPT] Put decompile error into the error.txt file
+    [OPT] Press 'y' to restart, otherwise to ignore if a Deapked project exists
 
-    [FIX] After writing .classpath and .project, the XMLWriter did not close.
+    [FIX] After writing .classpath and .project, the XMLWriter did not close
 
 Deapk 1.0
     (30/06/2013)

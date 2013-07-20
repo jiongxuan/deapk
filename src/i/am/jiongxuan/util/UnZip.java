@@ -20,6 +20,7 @@ package i.am.jiongxuan.util;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -29,19 +30,19 @@ import java.util.zip.ZipFile;
  * @author Jiongxuan Zhang
  */
 public class UnZip {
-    public static void extract(String fileName, String unZipDir) throws IOException {
-        File f = new File(unZipDir);
+    public static void extract(Path fileName, Path unZipDir) throws IOException {
+        File f = unZipDir.toFile();
         if (!f.exists()) {
             f.mkdirs();
         }
 
         ZipEntry entry;
-        ZipFile zipfile = new ZipFile(fileName);
+        ZipFile zipfile = new ZipFile(fileName.toFile());
         Enumeration<? extends ZipEntry> entries = zipfile.entries();
         while (entries.hasMoreElements()) {
             entry = (ZipEntry) entries.nextElement();
 
-            File file = new File(unZipDir + entry.getName());
+            File file = unZipDir.resolve(entry.getName()).toFile();
             if (file.exists()) {
                 continue;
             }

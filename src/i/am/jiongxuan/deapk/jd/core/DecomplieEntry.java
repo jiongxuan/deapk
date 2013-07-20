@@ -17,19 +17,21 @@
 
 package i.am.jiongxuan.deapk.jd.core;
 
+import java.nio.file.Path;
+
 /**
  * @author Jiongxuan Zhang
  */
 public class DecomplieEntry {
-    private String mJavaPath;
+    private Path mJavaPath;
     private String mContent;
 
-    public DecomplieEntry(String javaPath, String content) {
+    public DecomplieEntry(Path javaPath, String content) {
         mJavaPath = javaPath;
         mContent = content;
     }
 
-    public String getJavaPath() {
+    public Path getJavaPath() {
         return mJavaPath;
     }
 
