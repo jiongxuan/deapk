@@ -11,7 +11,7 @@
 	<classpathentry kind="lib" path="lib/dex2jar/dx.jar"/>
 	<classpathentry kind="lib" path="lib/dex2jar/jar-rename-1.6.jar"/>
 	<classpathentry kind="lib" path="lib/dex2jar/jasmin-p2.5.jar"/>
-	<classpathentry kind="lib" path="lib/apktool/apktool.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-2.0.0-ALPHA-2.jar"/>
+	<classpathentry kind="lib" path="lib/apktool/apktool_2.0.0b7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

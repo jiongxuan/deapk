@@ -16,12 +16,12 @@
  */
 
 Deapk 1.5
-	(20/07/2013)
-	[NEW] More convenient to view the Java code and Smali code
+    (20/07/2013)
+    [NEW] More convenient to view the Java code and Smali code
 	
-	[OPT] Upgrade to JDK 7.0 to enhance stability
+    [OPT] Upgrade to JDK 7.0 to enhance stability
 	
-DeApk 1.2
+Deapk 1.2
     (06/07/2013)
     [NEW] Support for multiple files to deapk
     [OPT] Put decompile error into the error.txt file
