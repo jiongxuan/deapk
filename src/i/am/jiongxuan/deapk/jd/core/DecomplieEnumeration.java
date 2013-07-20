@@ -18,6 +18,8 @@
 package i.am.jiongxuan.deapk.jd.core;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,23 +36,23 @@ import jd.ide.intellij.JavaDecompiler;
 public class DecomplieEnumeration implements Enumeration<DecomplieEntry> {
 
     private JavaDecompiler mDecompiler;
-    private String mJarPath;
+    private Path mJarPath;
 
-    private Map<String, String> mJavaToClassPathMap = new HashMap<String, String>();
-    private Iterator<Entry<String, String>> mIterator;
+    private Map<Path, Path> mJavaToClassPathMap = new HashMap<Path, Path>();
+    private Iterator<Entry<Path, Path>> mIterator;
 
-    public DecomplieEnumeration(JavaDecompiler decompiler, String jarPath) throws IOException {
+    public DecomplieEnumeration(JavaDecompiler decompiler, Path jarPath) throws IOException {
         mDecompiler = decompiler;
         mJarPath = jarPath;
 
-        ZipFile zipFile = new ZipFile(mJarPath);
+        ZipFile zipFile = new ZipFile(mJarPath.toFile());
         Enumeration<? extends ZipEntry> enumeration = zipFile.entries();
         while (enumeration.hasMoreElements()) {
             ZipEntry zipEntry = (ZipEntry) enumeration.nextElement();
             String entryName = zipEntry.getName();
             if (entryName.endsWith(".class")) {
-                String classPath = entryName.replaceAll("\\$.*\\.class$", ".class");
-                String javaPath  = classPath.replaceAll("\\.class$", ".java");
+                Path classPath = Paths.get(entryName.replaceAll("\\$.*\\.class$", ".class"));
+                Path javaPath  = Paths.get(classPath.toString().replaceAll("\\.class$", ".java"));
                 if (!mJavaToClassPathMap.containsKey(javaPath)) {
                     mJavaToClassPathMap.put(javaPath, classPath);
                 }
@@ -69,10 +71,10 @@ public class DecomplieEnumeration implements Enumeration<DecomplieEntry> {
     @Override
     public DecomplieEntry nextElement() {
         while (mIterator.hasNext()) {
-            Entry<String, String> entry = (Entry<String, String>) mIterator.next();
-            String javaPath = entry.getKey();
-            String classPath = entry.getValue();
-            String content = mDecompiler.decompile(mJarPath, classPath);
+            Entry<Path, Path> entry = (Entry<Path, Path>) mIterator.next();
+            Path javaPath = entry.getKey();
+            Path classPath = entry.getValue();
+            String content = mDecompiler.decompile(mJarPath.toString(), classPath.toString());
             return new DecomplieEntry(javaPath, content);
         }
 

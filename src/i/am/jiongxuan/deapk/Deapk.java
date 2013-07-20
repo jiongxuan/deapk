@@ -17,18 +17,6 @@
 
 package i.am.jiongxuan.deapk;
 
-import brut.androlib.Androlib;
-import brut.androlib.AndrolibException;
-import brut.androlib.ApkDecoder;
-import brut.androlib.res.AndrolibResources;
-
-import com.googlecode.dex2jar.Method;
-import com.googlecode.dex2jar.reader.DexFileReader;
-import com.googlecode.dex2jar.v3.Dex2jar;
-import com.googlecode.dex2jar.v3.DexExceptionHandlerImpl;
-
-import org.apache.commons.io.FilenameUtils;
-
 import i.am.jiongxuan.deapk.jd.core.Decompiler;
 import i.am.jiongxuan.deapk.jd.core.DecomplieEntry;
 import i.am.jiongxuan.deapk.jd.core.DecomplieEnumeration;
@@ -39,6 +27,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -47,41 +38,56 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import brut.androlib.Androlib;
+import brut.androlib.AndrolibException;
+import brut.androlib.ApkDecoder;
+import brut.androlib.res.AndrolibResources;
+
+import com.googlecode.dex2jar.Method;
+import com.googlecode.dex2jar.reader.DexFileReader;
+import com.googlecode.dex2jar.v3.Dex2jar;
+import com.googlecode.dex2jar.v3.DexExceptionHandlerImpl;
+
 
 /**
  * @author Jiongxuan Zhang
  */
 public class Deapk {
-    private String mApkPath;
-    private String mProjectPath;
-    private String mClassesDexPath;
-    private String mClassesJarPath;
-    private String mErrorPath;
-    private String mSrcPath;
+    private final Path mApkPath;
+    private final Path mProjectPath;
+    private final Path mClassesDexPath;
+    private final Path mClassesJarPath;
+    private final Path mClassesJarErrorPath;
+    private final Path mErrorPath;
+    private final Path mSrcPath;
+    private final Path mSmaliPath;
 
-    private File mApkFile;
-    private File mProjectDir;
+    private final File mApkFile;
+    private final File mProjectDir;
 
-    private GenerateProjectOperator mGenerateProjectOperator;
+    private final GenerateProjectOperator mGenerateProjectOperator;
 
     public Deapk(String apkPath) {
-        mApkPath = apkPath;
-        mApkFile = new File(apkPath);
+        mApkPath = Paths.get(apkPath);
+        mApkFile = mApkPath.toFile();
 
-        String apkName = mApkPath.substring(0, mApkPath.lastIndexOf('.'));
-        mProjectPath = apkName + "_project" + File.separator;
-        mProjectDir = new File(mProjectPath);
-
-        mClassesDexPath = mProjectPath + "classes.dex";
-        mClassesJarPath = mProjectPath + "classes.jar";
-        mErrorPath = mProjectPath + "error.txt";
-        mSrcPath = mProjectPath + "src" + File.separator;
+        String apkName = mApkPath.getFileName().toString();
+        String projectName = apkName.substring(0, apkName.lastIndexOf('.'));
+        mProjectPath = mApkPath.resolveSibling(projectName + "_project");
+        mProjectDir = mProjectPath.toFile();
+        
+        mClassesDexPath = mProjectPath.resolve("classes.dex");
+        mClassesJarPath = mProjectPath.resolve("classes.jar");
+        mClassesJarErrorPath = mProjectPath.resolve("classes-error.zip");
+        mErrorPath = mProjectPath.resolve("error.txt");
+        mSrcPath = mProjectPath.resolve("src");
+        mSmaliPath = mProjectPath.resolve("smali");
 
         mGenerateProjectOperator = new GenerateProjectOperator(
                 mProjectPath);
     }
 
-    public String getApkPath() {
+    public Path getApkPath() {
         return mApkPath;
     }
 
@@ -97,7 +103,7 @@ public class Deapk {
         return new Date(mProjectDir.lastModified());
     }
 
-    public String getProjectPath() {
+    public Path getProjectPath() {
         return mProjectPath;
     }
 
@@ -113,8 +119,8 @@ public class Deapk {
 
         return decodeResources() &&
                 extractAll() &&
-                decodeClassDex() &&
-                decodeJavaCodes() &&
+                decodeToClassDex() &&
+                decodeToJavaCodes() &&
                 writeEclipseProjectFiles();
     }
 
@@ -132,14 +138,25 @@ public class Deapk {
             apkDecoder.setOutDir(mProjectDir);
             apkDecoder.setApkFile(mApkFile);
             apkDecoder.decode();
-            return true;
         } catch (AndrolibException e) {
             e.printStackTrace();
+            return false;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-
-        return false;
+        
+        File smaliFile = mSmaliPath.toFile();
+        if (smaliFile.exists()) {
+        	try {
+				Files.move(mSmaliPath, mSrcPath);
+			} catch (IOException e) {
+				e.printStackTrace();
+				// Rename the smali to src is not required, skip it if error.
+			}
+        }
+        
+        return true;
     }
 
     public boolean extractAll() {
@@ -154,14 +171,11 @@ public class Deapk {
         return false;
     }
 
-    public boolean decodeClassDex() {
+    public boolean decodeToClassDex() {
         System.out.print(">>> (3/5) Generating all Java Class files...");
 
-        String classesJarName = mProjectPath + "classes";
-        String classesJarPath = classesJarName + ".jar";
-
         try {
-            DexFileReader reader = new DexFileReader(new File(mClassesDexPath));
+            DexFileReader reader = new DexFileReader(mClassesDexPath.toFile());
 
             int count = reader.getClassSize();
             String remain = "(Estimate " + (count / 100) + " seconds)";
@@ -173,14 +187,12 @@ public class Deapk {
             Dex2jar.from(reader).withExceptionHandler(handler).reUseReg(true)
                     .topoLogicalSort(true).skipDebug(true)
                     .optimizeSynchronized(true).printIR(false).verbose(false)
-                    .to(classesJarPath);
+                    .to(mClassesJarPath.toString());
 
             if (handler != null) {
                 Map<Method, Exception> exceptions = handler.getExceptions();
                 if (exceptions != null && exceptions.size() > 0) {
-                    File errorFile = new File(
-                            FilenameUtils.getBaseName(classesJarName)
-                                    + "-error.zip");
+                    File errorFile = mClassesJarErrorPath.toFile();
                     handler.dumpException(reader, errorFile);
                 }
             }
@@ -198,7 +210,7 @@ public class Deapk {
         return false;
     }
 
-    public boolean decodeJavaCodes() {
+    public boolean decodeToJavaCodes() {
         System.out.print(">>> (4/5) Generating all Java source code files...");
 
         Decompiler decompiler = new Decompiler(mClassesJarPath);
@@ -220,8 +232,8 @@ public class Deapk {
                 DecomplieEntry entry = (DecomplieEntry) enumeration
                         .nextElement();
                 if (entry != null) {
-                    String relativePath = entry.getJavaPath();
-                    File saveFile = new File(mSrcPath + relativePath);
+                    Path relativePath = entry.getJavaPath();
+                    File saveFile = mSrcPath.resolve(relativePath).toFile();
                     File saveParentDir = saveFile.getParentFile();
                     if (!saveParentDir.exists()) {
                         saveParentDir.mkdirs();
@@ -231,7 +243,7 @@ public class Deapk {
                     if (source != null && source != "") {
                         FileUtils.writeTo(source, new FileOutputStream(saveFile));
                     } else {
-                        failureList.add(relativePath);
+                        failureList.add(relativePath.toString());
                     }
                 }
             } catch (Exception e) {
@@ -255,7 +267,7 @@ public class Deapk {
 
     private void writeError(String errorTitle, List<String> errors) {
 		try {
-	    	FileWriter errorWriter = new FileWriter(mErrorPath);
+	    	FileWriter errorWriter = new FileWriter(mErrorPath.toFile());
 	    	errorWriter.write(errorTitle + "\r\n");
 	    	
 	    	for (String error : errors) {
