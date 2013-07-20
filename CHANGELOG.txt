@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-Deapk 1.6
-	(14/07/2013)
+Deapk 1.5
+	(20/07/2013)
 	[NEW] More convenient to view the Java code and Smali code
 	
 	[OPT] Upgrade to JDK 7.0 to enhance stability
