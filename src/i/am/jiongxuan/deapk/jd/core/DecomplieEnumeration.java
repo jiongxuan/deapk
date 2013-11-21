@@ -19,7 +19,6 @@ package i.am.jiongxuan.deapk.jd.core;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,8 +37,8 @@ public class DecomplieEnumeration implements Enumeration<DecomplieEntry> {
     private JavaDecompiler mDecompiler;
     private Path mJarPath;
 
-    private Map<Path, Path> mJavaToClassPathMap = new HashMap<Path, Path>();
-    private Iterator<Entry<Path, Path>> mIterator;
+    private Map<String, String> mJavaToClassPathMap = new HashMap<String, String>();
+    private Iterator<Entry<String, String>> mIterator;
 
     public DecomplieEnumeration(JavaDecompiler decompiler, Path jarPath) throws IOException {
         mDecompiler = decompiler;
@@ -51,8 +50,8 @@ public class DecomplieEnumeration implements Enumeration<DecomplieEntry> {
             ZipEntry zipEntry = (ZipEntry) enumeration.nextElement();
             String entryName = zipEntry.getName();
             if (entryName.endsWith(".class")) {
-                Path classPath = Paths.get(entryName.replaceAll("\\$.*\\.class$", ".class"));
-                Path javaPath  = Paths.get(classPath.toString().replaceAll("\\.class$", ".java"));
+                String classPath = entryName.replaceAll("\\$.*\\.class$", ".class");
+                String javaPath  = classPath.toString().replaceAll("\\.class$", ".java");
                 if (!mJavaToClassPathMap.containsKey(javaPath)) {
                     mJavaToClassPathMap.put(javaPath, classPath);
                 }
@@ -71,9 +70,9 @@ public class DecomplieEnumeration implements Enumeration<DecomplieEntry> {
     @Override
     public DecomplieEntry nextElement() {
         while (mIterator.hasNext()) {
-            Entry<Path, Path> entry = (Entry<Path, Path>) mIterator.next();
-            Path javaPath = entry.getKey();
-            Path classPath = entry.getValue();
+            Entry<String, String> entry = (Entry<String, String>) mIterator.next();
+            String javaPath = entry.getKey();
+            String classPath = entry.getValue();
             String content = mDecompiler.decompile(mJarPath.toString(), classPath.toString());
             return new DecomplieEntry(javaPath, content);
         }

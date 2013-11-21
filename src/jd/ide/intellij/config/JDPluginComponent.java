@@ -18,11 +18,29 @@
 package jd.ide.intellij.config;
 
 public class JDPluginComponent {
+    private boolean escapeUnicodeCharactersEnabled;
+    private boolean omitPrefixThisEnabled;
+    private boolean realignLineNumbersEnabled;
+    private boolean showLineNumbersEnabled;
+    private boolean showMetadataEnabled;
+
+    public boolean isEscapeUnicodeCharactersEnabled() {
+        return escapeUnicodeCharactersEnabled;
+    }
+
+    public boolean isOmitPrefixThisEnabled() {
+        return omitPrefixThisEnabled;
+    }
+
+    public boolean isRealignLineNumbersEnabled() {
+        return realignLineNumbersEnabled;
+    }
+
     public boolean isShowLineNumbersEnabled() {
-        return false;
+        return showLineNumbersEnabled;
     }
 
     public boolean isShowMetadataEnabled() {
-        return false;
+        return showMetadataEnabled;
     }
 }

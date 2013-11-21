@@ -75,7 +75,7 @@ public class Deapk {
         String projectName = apkName.substring(0, apkName.lastIndexOf('.'));
         mProjectPath = mApkPath.resolveSibling(projectName + "_project");
         mProjectDir = mProjectPath.toFile();
-        
+
         mClassesDexPath = mProjectPath.resolve("classes.dex");
         mClassesJarPath = mProjectPath.resolve("classes.jar");
         mClassesJarErrorPath = mProjectPath.resolve("classes-error.zip");
@@ -145,17 +145,17 @@ public class Deapk {
             e.printStackTrace();
             return false;
         }
-        
+
         File smaliFile = mSmaliPath.toFile();
         if (smaliFile.exists()) {
-        	try {
-				Files.move(mSmaliPath, mSrcPath);
-			} catch (IOException e) {
-				e.printStackTrace();
-				// Rename the smali to src is not required, skip it if error.
-			}
+            try {
+                Files.move(mSmaliPath, mSrcPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Rename the smali to src is not required, skip it if error.
+            }
         }
-        
+
         return true;
     }
 
@@ -232,7 +232,7 @@ public class Deapk {
                 DecomplieEntry entry = (DecomplieEntry) enumeration
                         .nextElement();
                 if (entry != null) {
-                    Path relativePath = entry.getJavaPath();
+                    String relativePath = entry.getJavaPath();
                     File saveFile = mSrcPath.resolve(relativePath).toFile();
                     File saveParentDir = saveFile.getParentFile();
                     if (!saveParentDir.exists()) {
@@ -254,34 +254,36 @@ public class Deapk {
         }
         percentWritter.end(true);
 
-        Collections.sort(failureList);
-        writeError("Unable to decompile these files:", failureList);
+        if (failureList.size() > 0) {
+            Collections.sort(failureList);
+            writeError("Unable to decompile these files:", failureList);
+        }
 
         String printString = String
                 .format("          Decompiled %d java source files, succeed %d files, error %d files",
                         count, count - failureList.size(), failureList.size());
         System.out.println(printString);
-       
+
         return true;
     }
 
     private void writeError(String errorTitle, List<String> errors) {
-		try {
-	    	FileWriter errorWriter = new FileWriter(mErrorPath.toFile());
-	    	errorWriter.write(errorTitle + "\r\n");
-	    	
-	    	for (String error : errors) {
-				errorWriter.write("      " + error + "\r\n");
-			}
-			
-			if (errorWriter != null) {
-				errorWriter.close();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            FileWriter errorWriter = new FileWriter(mErrorPath.toFile());
+            errorWriter.write(errorTitle + "\r\n");
+
+            for (String error : errors) {
+                errorWriter.write("      " + error + "\r\n");
+            }
+
+            if (errorWriter != null) {
+                errorWriter.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
+
     private boolean writeEclipseProjectFiles() {
         System.out.println(">>> (5/5) Creating a new Android project...");
         mGenerateProjectOperator.generateGenDir();
