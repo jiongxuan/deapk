@@ -17,8 +17,8 @@
 
 package i.am.jiongxuan.deapk.jd.core;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,16 +35,16 @@ import jd.ide.intellij.JavaDecompiler;
 public class DecomplieEnumeration implements Enumeration<DecomplieEntry> {
 
     private JavaDecompiler mDecompiler;
-    private Path mJarPath;
+    private File mJarPath;
 
     private Map<String, String> mJavaToClassPathMap = new HashMap<String, String>();
     private Iterator<Entry<String, String>> mIterator;
 
-    public DecomplieEnumeration(JavaDecompiler decompiler, Path jarPath) throws IOException {
+    public DecomplieEnumeration(JavaDecompiler decompiler, File jarPath) throws IOException {
         mDecompiler = decompiler;
         mJarPath = jarPath;
 
-        ZipFile zipFile = new ZipFile(mJarPath.toFile());
+        ZipFile zipFile = new ZipFile(mJarPath);
         Enumeration<? extends ZipEntry> enumeration = zipFile.entries();
         while (enumeration.hasMoreElements()) {
             ZipEntry zipEntry = (ZipEntry) enumeration.nextElement();

@@ -34,7 +34,7 @@ public class MainApplication {
         System.out.println("====================================================================");
         System.out.println();
         System.out
-                .println(" Welcome to choose Deapk by Jiongxuan (Version: 1.2)");
+                .println(" Welcome to choose Deapk by Jiongxuan (Version: 2.0)");
         System.out.println("    The most convenient source decompiling tool by far.");
         System.out.println();
         System.out
@@ -71,7 +71,7 @@ public class MainApplication {
             String vaildFile = vaildFileList.get(i);
             Deapk deapk = new Deapk(vaildFile);
             if (deapkNow(deapk)) {
-            	System.out.println();
+                System.out.println();
                 System.out.println(">>> Deapked the " + deapk.getProjectNameIfExists() + " project complete!");
                 hasSucceed = true;
             }
@@ -152,7 +152,7 @@ public class MainApplication {
     }
 
     private static void usage() {
-    	System.out.println();
+        System.out.println();
         System.out.println("Usage:");
         System.out.println("    deapk <apk_path>");
         System.out.println();

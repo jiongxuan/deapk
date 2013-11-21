@@ -17,17 +17,17 @@
 
 package i.am.jiongxuan.deapk.jd.core;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 import jd.ide.intellij.JavaDecompiler;
 
 public class Decompiler {
     private JavaDecompiler mDecompiler;
-    private Path mJarPath;
+    private File mJarPath;
     private DecomplieEnumeration mDecomplieEnumeration;
 
-    public Decompiler(Path jarPath) {
+    public Decompiler(File jarPath) {
         mDecompiler = new JavaDecompiler();
         mJarPath = jarPath;
     }

@@ -17,26 +17,24 @@
 
 package jd.ide.intellij;
 
-
-
-import i.am.jiongxuan.util.OSInfo;
+import i.am.jiongxuan.deapk.ArchUtils;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 
+import org.apache.commons.lang3.SystemUtils;
 
 /**
  * Java Decompiler tool, use native libs to achieve decompilation.
  * <p/>
  * <p>
- * Identify the native lib full path through IntelliJ helpers in
- * {@link SystemInfo}.
+ * Identify the native lib full path through IntelliJ helpers in {@link SystemInfo}.
  * </p>
  */
 public class JavaDecompiler {
 
-    public static String JD_LIB_RELATIVE_PATH = "lib" + File.separator + "jd-core" + File.separator
-            + osIdentifier() + File.separator + architecture() + File.separator + libFileName();
+    public static String JD_LIB_RELATIVE_PATH = "lib" + File.separator + "jd-core" + File.separator + osIdentifier()
+            + File.separator + architecture() + File.separator + libFileName();
 
     public JavaDecompiler() {
         String pluginPath = JavaDecompiler.class.getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -47,8 +45,7 @@ public class JavaDecompiler {
         }
         pluginPath = new File(pluginPath).getParent();
 
-        String libPath = pluginPath + File.separator
-                + JD_LIB_RELATIVE_PATH;
+        String libPath = pluginPath + File.separator + JD_LIB_RELATIVE_PATH;
         loadLibrary(pluginPath, libPath);
     }
 
@@ -56,10 +53,8 @@ public class JavaDecompiler {
         try {
             System.load(libPath);
         } catch (Exception e) {
-            throw new IllegalStateException(
-                    "Something got wrong when loading the Java Decompiler native lib, " +
-                            "\nlookup path : " + libPath +
-                            "\nplugin path : " + pluginPath, e);
+            throw new IllegalStateException("Something got wrong when loading the Java Decompiler native lib, "
+                    + "\nlookup path : " + libPath + "\nplugin path : " + pluginPath, e);
         }
     }
 
@@ -69,11 +64,11 @@ public class JavaDecompiler {
      * @return lib filename.
      */
     private static String libFileName() {
-        if (OSInfo.isMacOSX()) {
+        if (SystemUtils.IS_OS_MAC_OSX) {
             return "libjd-intellij.jnilib";
-        } else if (OSInfo.isWindows()) {
+        } else if (SystemUtils.IS_OS_WINDOWS) {
             return "jd-intellij.dll";
-        } else if (OSInfo.isLinux()) {
+        } else if (SystemUtils.IS_OS_LINUX) {
             return "libjd-intellij.so";
         }
         throw new IllegalStateException("OS not supported");
@@ -85,13 +80,12 @@ public class JavaDecompiler {
      * @return x86 or x86_64 for respectively 32bit 64bit architecture.
      */
     private static String architecture() {
-        if (OSInfo.is32Bit()) {
+        if (ArchUtils.is32Bit()) {
             return "x86";
-        } else if (OSInfo.is64Bit()) {
+        } else if (ArchUtils.is64Bit()) {
             return "x86_64";
         }
-        throw new IllegalStateException(
-                "Unsupported architecture, only x86 and x86_64 architectures are supported.");
+        throw new IllegalStateException("Unsupported architecture, only x86 and x86_64 architectures are supported.");
     }
 
     /**
@@ -100,25 +94,25 @@ public class JavaDecompiler {
      * @return Either macosx, win32, linux
      */
     private static String osIdentifier() {
-        if (OSInfo.isMacOSX()) {
+        if (SystemUtils.IS_OS_MAC_OSX) {
             return "macosx";
-        } else if (OSInfo.isWindows()) {
+        } else if (SystemUtils.IS_OS_WINDOWS) {
             return "win32";
-        } else if (OSInfo.isLinux()) {
+        } else if (SystemUtils.IS_OS_LINUX) {
             return "linux";
         }
-        throw new IllegalStateException(
-                "Unsupported OS, only windows, linux and mac OSes are supported.");
+        throw new IllegalStateException("Unsupported OS, only windows, linux and mac OSes are supported.");
     }
 
     /**
      * Actual call to the native lib.
      *
-     * @param basePath Path to the root of the classpath, either a path to a
+     * @param basePath
+     *            Path to the root of the classpath, either a path to a
      *            directory or a path to a jar file.
-     * @param internalClassName internal name of the class.
+     * @param internalClassName
+     *            internal name of the class.
      * @return Decompiled class text.
      */
     public native String decompile(String basePath, String internalClassName);
 }
-

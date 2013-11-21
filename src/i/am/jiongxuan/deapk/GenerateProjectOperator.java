@@ -17,15 +17,14 @@
 
 package i.am.jiongxuan.deapk;
 
-import i.am.jiongxuan.util.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.nio.file.Path;
 
+import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -37,15 +36,15 @@ import org.dom4j.io.XMLWriter;
  * @author Jiongxuan Zhang
  */
 public class GenerateProjectOperator {
-    private Path mProjectPath;
+    private File mProjectFile;
     private String mProjectName;
 
-    public GenerateProjectOperator(Path projectPath) {
-        mProjectPath = projectPath;
+    public GenerateProjectOperator(File projectFile) {
+        mProjectFile = projectFile;
     }
 
     public void generateGenDir() {
-        File genDir = mProjectPath.resolve("gen").toFile();
+        File genDir = new File(mProjectFile, "gen");
         if (!genDir.exists()) {
             genDir.mkdirs();
         }
@@ -55,8 +54,7 @@ public class GenerateProjectOperator {
         StringBuilder projectBuilder = new StringBuilder();
         projectBuilder.append("target=android-17");
         try {
-            FileUtils.writeTo(projectBuilder.toString(), new FileOutputStream(
-                    mProjectPath.resolve("project.properties").toFile()));
+            FileUtils.write(new File(mProjectFile, "project.properties"), projectBuilder.toString());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -91,7 +89,7 @@ public class GenerateProjectOperator {
 
         try {
             XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(
-                    mProjectPath.resolve(".classpath").toFile()));
+                    new File(mProjectFile, ".classpath")));
             xmlWriter.write(document);
             xmlWriter.close();
         } catch (UnsupportedEncodingException e) {
@@ -130,7 +128,7 @@ public class GenerateProjectOperator {
 
         try {
             XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(
-                    mProjectPath.resolve(".project").toFile()));
+                    new File(mProjectFile, ".project")));
             xmlWriter.write(document);
             xmlWriter.close();
         } catch (UnsupportedEncodingException e) {
@@ -152,7 +150,7 @@ public class GenerateProjectOperator {
             String versionName = "";
             String versionCode = "";
 
-            File inputXml = mProjectPath.resolve("AndroidManifest.xml").toFile();
+            File inputXml = new File(mProjectFile, "AndroidManifest.xml");
             SAXReader saxReader = new SAXReader();
             try {
                 Document document = saxReader.read(inputXml);

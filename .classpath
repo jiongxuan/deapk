@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/dex2jar/asm-all-3.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/dex2jar/dex-ir-1.12.jar"/>
@@ -12,6 +12,7 @@
 	<classpathentry kind="lib" path="lib/dex2jar/jar-rename-1.6.jar"/>
 	<classpathentry kind="lib" path="lib/dex2jar/jasmin-p2.5.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-2.0.0-ALPHA-2.jar"/>
-	<classpathentry kind="lib" path="lib/apktool/apktool_2.0.0b7.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/apktool/apktool.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -15,12 +15,20 @@
  * limitations under the License.
  */
 
+Deapk 2.0
+    (21/11/2013)
+    [FIX] Fix "IOUtils.close" crash for some reason.
+    [FIX] Fix a bug that pop-up some useless dialog boxes.
+
+    [OPT] Upgrade JD-Core to 0.7.0.1
+    [OPT] Upgrade apktool
+
 Deapk 1.5
     (20/07/2013)
     [NEW] More convenient to view the Java code and Smali code
-	
+
     [OPT] Upgrade to JDK 7.0 to enhance stability
-	
+
 Deapk 1.2
     (06/07/2013)
     [NEW] Support for multiple files to deapk
